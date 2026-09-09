@@ -1,0 +1,184 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap');
+
+:root {
+  /* Default: Premium, sleek dark SaaS theme */
+  --bg-primary: #07070b;
+  --bg-secondary: #0d0d15;
+  --bg-card: #121221;
+  --bg-card-hover: #19192d;
+  --border: #212137;
+  --border-accent: #00ABE4;
+  --text-primary: #f0f0ff;
+  --text-secondary: #94A3B8;   /* Slate 400 */
+  --text-muted: #5b697e;       /* Slate 500 */
+  --accent-blue: #00ABE4;
+  --accent-blue-glow: rgba(0, 171, 228, 0.25);
+  --accent-green: #10B981;
+  --accent-green-glow: rgba(16, 185, 129, 0.15);
+  --accent-amber: #F59E0B;
+  --accent-red: #EF4444;
+  --accent-purple: #8B5CF6;
+  --gradient-hero: linear-gradient(135deg, #07070b 0%, #121221 100%);
+  --radius: 12px;
+}
+
+:root.light-theme {
+  /* Light Theme Variant */
+  --bg-primary: #E9F1FA;
+  --bg-secondary: #FFFFFF;
+  --bg-card: #FFFFFF;
+  --bg-card-hover: #F8FAFC;
+  --border: #D1E3F5;
+  --border-accent: #00ABE4;
+  --text-primary: #0F172A;     /* Slate 900 */
+  --text-secondary: #334155;   /* Slate 700 */
+  --text-muted: #64748B;       /* Slate 500 */
+  --accent-blue: #00ABE4;
+  --accent-blue-glow: rgba(0, 171, 228, 0.15);
+  --accent-green: #10B981;
+  --accent-green-glow: rgba(16, 185, 129, 0.1);
+  --accent-amber: #F59E0B;
+  --accent-red: #EF4444;
+  --accent-purple: #8B5CF6;
+  --gradient-hero: linear-gradient(135deg, #E9F1FA 0%, #FFFFFF 100%);
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* Force headings to Slate-900 / var(--text-primary) */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--text-primary) !important;
+  font-family: 'Outfit', 'Inter', sans-serif;
+}
+
+/* Override text-white classes in containers ONLY when in light theme */
+.light-theme .bg-card .text-white,
+.light-theme .border .text-white,
+.light-theme tr .text-white,
+.light-theme td .text-white,
+.light-theme p .text-white,
+.light-theme span.text-white:not(.bg-primary-btn *):not(.bg-\[\#4f7cff\] *) {
+  color: var(--text-primary);
+}
+
+/* Make card borders softer and add premium shadows */
+.border {
+  border-color: var(--border) !important;
+  transition: border-color 0.2s ease;
+}
+
+.rounded-xl {
+  border-radius: var(--radius) !important;
+}
+
+/* Premium shadows for SaaS cards */
+.shadow-sm {
+  box-shadow: 0 1px 2px 0 rgba(15, 23, 42, 0.05) !important;
+}
+.shadow, .shadow-md {
+  box-shadow: 0 4px 6px -1px rgba(15, 23, 42, 0.03), 0 2px 4px -2px rgba(15, 23, 42, 0.03), 0 0 0 1px rgba(15, 23, 42, 0.02) !important;
+}
+.shadow-lg {
+  box-shadow: 0 10px 15px -3px rgba(15, 23, 42, 0.04), 0 4px 6px -4px rgba(15, 23, 42, 0.04), 0 0 0 1px rgba(15, 23, 42, 0.02) !important;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--bg-primary); }
+::-webkit-scrollbar-thumb { background: #CBD5E1; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #94A3B8; }
+
+/* Glow utility classes */
+.glow-blue { box-shadow: 0 0 20px var(--accent-blue-glow); }
+.glow-green { box-shadow: 0 0 15px var(--accent-green-glow); }
+.glow-pulse {
+  animation: glowPulse 2s ease-in-out infinite;
+}
+@keyframes glowPulse {
+  0%, 100% { box-shadow: 0 0 10px var(--accent-blue-glow), 0 0 0 1px rgba(0, 171, 228, 0.2); }
+  50% { box-shadow: 0 0 20px var(--accent-blue-glow), 0 0 0 2px rgba(0, 171, 228, 0.4); }
+}
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+.animate-spin-slow { animation: spin-slow 2s linear infinite; }
+
+/* Remap old hardcoded blue values in tailwind classes to the new bright blue */
+.bg-\[\#4f7cff\], .bg-blue-600 {
+  background-color: var(--accent-blue) !important;
+}
+.bg-\[\#4f7cff\]:hover, .bg-blue-600:hover {
+  background-color: #0093c4 !important; /* slightly darker blue */
+}
+.text-\[\#4f7cff\], .text-blue-500, .text-blue-400 {
+  color: var(--accent-blue) !important;
+}
+.border-\[\#4f7cff\] {
+  border-color: var(--accent-blue) !important;
+}
+.hover\:text-white:hover {
+  color: var(--accent-blue) !important;
+}
+
+/* Enforce active sidebar and header text styling */
+.light-theme .text-white.active, .light-theme a.active .text-white {
+  color: var(--text-primary) !important;
+}
+
+/* Custom styled tables for light mode */
+table {
+  background-color: var(--bg-card);
+}
+thead tr {
+  background-color: var(--bg-card-hover);
+}
+tbody tr:hover {
+  background-color: var(--bg-card-hover);
+}
+
+/* Status colors override for status components */
+.bg-\[\#22d3a5\]\/20 {
+  background-color: rgba(16, 185, 129, 0.1) !important;
+}
+.text-\[\#22d3a5\], .text-emerald-400 {
+  color: var(--accent-green) !important;
+}
+.bg-\[\#22d3a5\], .bg-emerald-500 {
+  background-color: var(--accent-green) !important;
+}
+
+.text-\[\#a855f7\], .text-purple-400 {
+  color: var(--accent-purple) !important;
+}
+.bg-\[\#a855f7\]\/20 {
+  background-color: rgba(139, 92, 246, 0.1) !important;
+}
+
+.bg-\[\#f59e0b\]\/20 {
+  background-color: rgba(245, 158, 11, 0.1) !important;
+}
+.text-\[\#f59e0b\], .text-amber-400 {
+  color: var(--accent-amber) !important;
+}
+
+.bg-\[\#ef4444\]\/20, .bg-red-500\/10 {
+  background-color: rgba(239, 68, 68, 0.1) !important;
+}
+.text-\[\#ef4444\], .text-red-400 {
+  color: var(--accent-red) !important;
+}
+.bg-\[\#ef4444\], .bg-red-500 {
+  background-color: var(--accent-red) !important;
+}
