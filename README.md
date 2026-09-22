@@ -1,7 +1,5 @@
 # AgentForge AI
 
-GitHub Repository: [RamaKrishnasadisha/Agentic-AI-Platform](https://github.com/RamaKrishnasadisha/Agentic-AI-Platform)
-
 ## Team Members
 
 | Name | Email | Roll Number |
