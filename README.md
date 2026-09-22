@@ -6,6 +6,7 @@
 | :--- | :--- | :--- |
 | **Gopu Rama Krishna Reddy** | rkreddyg115@gmail.com | 23071A7226 |
 | **Gajula Abhiram** | abhiramgajula9@gmail.com | 23071A6914 |
+| **Althaf** | mohdalthaf914@gmail.com | 23071A12C0 |
 
 ## Project Overview
 
